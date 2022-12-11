@@ -21,8 +21,10 @@
   <ItemGroup>
     <Folder Include="Components\" />
     <Folder Include="CreatePages\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HolyFitLibrary\HolyFitLibrary.csproj" />
   </ItemGroup>
 
 </Project>
