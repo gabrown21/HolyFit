@@ -22,7 +22,13 @@ builder.Services.AddAuthorization(options =>
 });
 
 builder.Services.AddSingleton<WeatherForecastService>();
-//Add all here when add 
+//Add all here when add instead of RegisterServices.cs
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+builder.Services.AddMemoryCache(); 
+builder.Services.AddSingleton<IDbConnection, DbConnection>();
+builder.Services.AddSingleton<IMongoUserData, MongoUserData>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
