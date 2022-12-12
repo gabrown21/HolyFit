@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace HolyFitLibrary.Models
 {
@@ -10,6 +6,8 @@ namespace HolyFitLibrary.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.String)]
+
+        public string Id { get; set; }
         public string days { get; set; }
     }
 }
