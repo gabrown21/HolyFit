@@ -18,7 +18,7 @@ namespace HolyFitLibrary.Models
         public string EmailAddress { get; set; }
         public double Height { get; set; }
         public double Weight { get; set; }
-        public string Goals { get; set; }
+        public List<string> Goals { get; set; }
         public int DaysToWorkOut { get; set; }
     }
 
