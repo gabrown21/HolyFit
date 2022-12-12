@@ -22,6 +22,7 @@ Overview:
  We are coding in c# to allow seemless incorporation using these resources.
  We are also using visual studios community as our IDE to further the seemless integration Microsoft has created.
 
-Link: 
+Site Link:
+Video Link: https://drive.google.com/drive/folders/1GyrY6gx8jQy8sC-O4M1JToAFcbC0_Iek?usp=sharing
 
 Misc:
