@@ -16,7 +16,7 @@ namespace HolyFitLibrary.DataAccess
         public MongoDayModel(IDbConnection db, IMemoryCache cache)
         {
             _cache = cache;
-            _days = db.DayCollection;
+           _days = db.DayCollection;
         }
 
         public async Task<List<DayModel>> GetAllDays()
