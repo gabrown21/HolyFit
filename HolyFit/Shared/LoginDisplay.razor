@@ -1,0 +1,38 @@
+﻿<h3>LoginDisplay</h3>
+<AuthorizeView Policy="Admin">
+    <a class="login-link" href="/AdminApproval">
+        Admin
+    </a>
+</AuthorizeView>
+<AuthorizeView>
+    <Authorized>
+        <div>
+            <a class="login-link" href="/">Home</a>
+        <a class="login-link" href="/Profile">
+            Profile
+        </a>
+        <a class="login-link" href="MicrosoftIdentity/Account/SignOut">
+            Logout
+        </a>
+        <a class="login-link" href="/AboutUs">
+            About Us</a>
+             <a class="login-link" href="/Cart">Cart</a> 
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div>
+            <a class="login-link" href="/">Home</a>
+        <a class="login-link" href="MicrosoftIdentity/Account/SignIn">
+            Login
+        </a>
+        <a class="login-link" href="/AboutUs">
+            About Us</a>
+        <a class="login-link" href="/MicrosoftIdentity/Account/SignIn">Cart</a>
+        </div>
+
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}
