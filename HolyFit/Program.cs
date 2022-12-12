@@ -57,5 +57,3 @@ app.MapFallbackToPage("/_Host");
 
 app.Run();
 
-//app.UseAuthentication
-//app.Use

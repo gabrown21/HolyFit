@@ -22,6 +22,13 @@ namespace HolyFitLibrary.DataAccess
         public async Task<List<DayModel>> GetAllDays()
         {
             var output = _cache.Get<List<DayModel>>(cacheName);
+            if(output is null)
+            {
+                var results = await _categories.FindAsync(_ => true);
+                output = results.ToList();
+
+                _cache.Set(cacheName, output, TimeSpan.FromDays(1));
+            }
 
             return output;
         }
