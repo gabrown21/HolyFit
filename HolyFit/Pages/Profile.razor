@@ -1,5 +1,31 @@
-﻿<h3>Profile</h3>
+﻿@page "/Profile"
+@inject IMongoUserData userData
+
+
+<h3>Profile</h3>
 
 @code {
+    private async Task CreateUser()
+    {
+        var users = await UserData.GetAllUsers();
+        if(users?.Count > 0)
+        {
+            return;
+        }
+        
+        UserModel use = new();
+            {
+                Id = GetId();//Not sure if this is right
+                ObjectIdentifier = GetObjectIdentifier();
+                FirstName = GetFirstName();
+                LastName = GetLastName();
+                DisplayName = GetDisplayName();
+                EmailAddress = GetEmailAddress();
+                Height = GetHeight();
+                Weight = GetWeight();
+                DaysToWorkout = "3";
+                
+            }
+    }
 
 }
