@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace HolyFitLibrary.DataAccess
 {
-    public class MongoDayData
     {
         private readonly IMongoCollection<DayModel> _days;
         private readonly IMemoryCache _cache;
         private const string cacheName = "DayData";
 
-        public MongoDayData(IDbConnection db, IMemoryCache cache)
         {
             _cache = cache;
            _days = db.DayCollection;
