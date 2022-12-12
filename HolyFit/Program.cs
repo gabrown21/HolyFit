@@ -8,7 +8,7 @@ using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.ConfigureServices();
+//builder.ConfigureServices();
 
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection(key: "AzureAdB2C"));

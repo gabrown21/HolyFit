@@ -10,12 +10,12 @@ namespace HolyFitLibrary.DataAccess
     public class MongoWorkOutData
     {
         private readonly IMongoCollection<WorkOutModel> _users;
-
         public MongoWorkOutData(IDbConnection db)
         {
-            _users = db.UserCollection;
+            //_users = db.UserCollection;
         }
 
-        
+
 
     }
+}

@@ -1,4 +1,4 @@
-﻿using HolyFit.Data;
+﻿/*using HolyFit.Data;
 using HolyFit;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Components;
@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Identity.Web;
 namespace HolyFit
 {
-   /* public static class RegisterServices
+    public static class RegisterServices
     {
         public static void ConfigureServices(this WebApplicationBuilder builder)
         {
