@@ -33,7 +33,7 @@ namespace HolyFit.Models
         [Required]
         public double Weight { get; set; }
         [Required]
-        public string Goals { get; set; }   //I would make these hard coded and have a drop down for choices
+        public List<string> Goals { get; set; } = new();  //I would make these hard coded and have a drop down for choices
         [Required]
         public int DaysToWorkOut { get; set; }
     }
