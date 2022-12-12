@@ -21,4 +21,5 @@ namespace HolyFitLibrary.Models
         public string Goals { get; set; }
         public int DaysToWorkOut { get; set; }
     }
+
 }
