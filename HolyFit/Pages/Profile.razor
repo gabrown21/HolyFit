@@ -107,6 +107,11 @@
     protected async override Task OnInitializedAsync()
     {
         loggedInUser = await authProvider.GetUserFromAuth(userData);
+        var firstName = loggedInUser.FirstName;
+        var lastName = loggedInUser.LastName;
+        var weight = loggedInUser.Weight;
+        var height = loggedInUser.Height;
+        var objectId = loggedInUser.ObjectIdentifier;
         //Info about the logged in user can be pulled into here
     }
 
