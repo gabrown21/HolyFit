@@ -1,4 +1,12 @@
 ﻿@page "/Goals"
+@attribute [Authorize]
+
+
+@*
+@{
+    Layout = null;
+}
+*@
 
 <h3>Goals</h3>
 
@@ -10,6 +18,7 @@
 
 <input id="goalinput" type="text" name=" goalinput" value= ""/>
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
 
 
 @code {
