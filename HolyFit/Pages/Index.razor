@@ -1,4 +1,10 @@
 ﻿@page "/"
+@inject IMongoUserData userData
+@inject NavigationManager navManager
+@inject ProtectedSessionStorage sessionStorage
+@inject AuthenticationStateProvider authProvider
+
+@using Azure.Core
 
 <PageTitle>Index</PageTitle>
 
@@ -9,5 +15,68 @@
 
 
 @code{
-    //This section is where you put in the code for the webpage wheil the top is only for HTML, CSS you can use C# and Javascript down here.
+    private UserModel? loggedInUser;
+    private const string token = "e1e1b248ea72e1";
+
+    protected async override Task OnInitializedAsync()
+    {
+
+        await LoadAndVerifyUser();
+    }
+    public async Task LoadAndVerifyUser()
+    {
+        var authState = await authProvider.GetAuthenticationStateAsync();
+        string objectId = authState.User.Claims.FirstOrDefault(c => c.Type.Contains("objectidentifier"))?.Value;
+        if (string.IsNullOrWhiteSpace(objectId) == false) //meaning your logged in
+        {
+            loggedInUser = await userData.GetUserFromAuthentication(objectId) ?? new();
+            string firstName = authState.User.Claims.FirstOrDefault(c => c.Type.Contains("givenname"))?.Value; //gets firstname back
+            string lastName = authState.User.Claims.FirstOrDefault(c => c.Type.Contains("surname"))?.Value;
+            string displayName = authState.User.Claims.FirstOrDefault(c => c.Type.Equals("name"))?.Value;
+            string email = authState.User.Claims.FirstOrDefault(c => c.Type.Contains("email"))?.Value;
+
+            bool isDirty = false;
+            if (objectId.Equals(loggedInUser.ObjectIdentifier) == false)
+            {
+                isDirty = true;
+                loggedInUser.ObjectIdentifier = objectId;
+
+            }
+            if (firstName.Equals(loggedInUser.FirstName) == false)
+            {
+                isDirty = true;
+                loggedInUser.FirstName = firstName;
+            }
+
+            if (lastName.Equals(loggedInUser.LastName) == false)
+            {
+                isDirty = true;
+                loggedInUser.LastName = lastName;
+            }
+
+            if (displayName.Equals(loggedInUser.DisplayName) == false)
+            {
+                isDirty = true;
+                loggedInUser.DisplayName = displayName;
+            }
+
+            if (email.Equals(loggedInUser.EmailAddress) == false)
+            {
+                isDirty = true;
+                loggedInUser.EmailAddress = email;
+            }
+            if (isDirty)
+            {
+                if (string.IsNullOrWhiteSpace(loggedInUser.Id)) //first time the user logs in we create a user in DB
+                {
+                    
+                    await userData.CreateUser(loggedInUser);
+                }
+                else //else we update their user in db with new info
+                {
+                     userData.UpdateUser(loggedInUser);
+                }
+            }
+        }
+    }
 }
