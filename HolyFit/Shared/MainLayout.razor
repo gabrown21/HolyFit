@@ -9,8 +9,7 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-            <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+           <LoginDisplay />
         </div>
         
         <article class="content px-4">
@@ -20,11 +19,4 @@
 </div>
 
 @code {
-    private int currentCount = 0;
-    private string button_name = "login";
-
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
 }

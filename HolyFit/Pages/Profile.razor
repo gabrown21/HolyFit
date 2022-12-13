@@ -1,9 +1,51 @@
 ﻿@page "/Profile"
-
+@attribute [Authorize]
+@using HolyFitLibrary.Models
+@inject IMongoUserData userData
+@*Use the @inject with Interfaces to implement them into the profile page*@
+@inject AuthenticationStateProvider authProvider
+@inject NavigationManager navManager
 @*@inject IMongoUserData userData*@
 
 
-<h3>Profile</h3>
+
+
+<h1 class="page-heading text-uppercase mb-4"> My Profile</h1>
+
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-close" @onclick="ClosePage"></button>
+    </div>
+</div>
+
+
+<div class="form-layout">
+    <h2 class="my-submission-heading">
+        My Account
+    </h2>
+    <p class="my-submission-text">
+        <a hred="MicrosoftIdentity/Account/EditProfile">
+        Edit My Profile    
+        </a>
+    </p>
+</div>
+
+<div>
+    @if(!(userData == null))
+    {
+        <div>
+        <p>
+            This is where things about the user will be located!
+        </p>
+        </div>
+    }
+</div>
+
+
+@*follow the example above in order to put new resources onto the page for the user.*@
+
+
+@*<h3>Profile</h3>
 <section class="vh-100" style="background-color: #f4f5f7;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -56,14 +98,33 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 
 
 @code {
+    private UserModel? loggedInUser;
+
+    protected async override Task OnInitializedAsync()
+    {
+        loggedInUser = await authProvider.GetUserFromAuth(userData);
+        var firstName = loggedInUser.FirstName;
+        var lastName = loggedInUser.LastName;
+        var weight = loggedInUser.Weight;
+        var height = loggedInUser.Height;
+        var objectId = loggedInUser.ObjectIdentifier;
+        //Info about the logged in user can be pulled into here
+    }
+
+
+    
 
     private async Task CreateGoals()
     {
         ;
+    }
+    private void ClosePage()
+    {
+        navManager.NavigateTo("/");
     }
 }
 @*
