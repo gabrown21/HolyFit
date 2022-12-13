@@ -29,7 +29,7 @@ namespace HolyFitLibrary.DataAccess
 
         public async Task<UserModel> GetUserFromAuthentication(string objectId)
         {
-            var results = await _users.FindAsync(u => u.ObjectIdentifier == objectId);
+            var results = await _users.FindAsync(u => u.ObjectIdentifier.Equals(objectId));//maybe?
             return results.FirstOrDefault();
         }
 
@@ -71,5 +71,11 @@ namespace HolyFitLibrary.DataAccess
             var results = Builders<UserModel>.Update.AddToSet("DisplayName", newDisplayName);
             return _users.UpdateOneAsync(filter, results);
         }
+        public Task UpdateUser(UserModel user)
+        {
+            var filter = Builders<UserModel>.Filter.Eq("Id", user.Id);
+            return _users.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = true }); //Add object if not found otherwise update the object with the new user
+        }
+
     }
 }

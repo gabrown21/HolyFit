@@ -10,16 +10,16 @@ namespace HolyFitLibrary.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        public string ObjectIdentifier { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string DisplayName { get; set; }
-        public string EmailAddress { get; set; }
-        public double Height { get; set; }
-        public double Weight { get; set; }
-        public string Goals { get; set; }
-        public int DaysToWorkOut { get; set; }
+        public string? Id { get; set; } 
+        public string? ObjectIdentifier { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? DisplayName { get; set; }
+        public string? EmailAddress { get; set; }
+        public double? Height { get; set; }
+        public double? Weight { get; set; }
+        public List<string>? Goals { get; set; }
+        public int? DaysToWorkOut { get; set; }
     }
 
 }
